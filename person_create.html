@@ -1,0 +1,47 @@
+<!<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <nav class="navbar navbar-light bg-light">
+  <span class="navbar-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 offset-md-7">
+          Введите данные, выберите нужные документы и получите готовый документ.
+        </div>
+      </div>
+    </div>
+  </span>
+</nav>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Конструктор</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-md-2">
+        <form  action="" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-group">
+              {% if field.errors %}
+                <div class="alert alert-danger">
+                  {{ field.errors }}
+                  </div>
+              {% endif %}
+              {{field.label}}
+              {{field}}
+            </div>
+          {% endfor %}
+          <p><input type="checkbox" name="option" value="3">Раздел 3<Br>
+              <input type="checkbox" name="option" value="5">Раздел 5<Br>
+              <input type="checkbox" name="option" value="7">Раздел 7</p>
+          <button type="submit" name="send" class="btn btn-primary" >Создать документ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
